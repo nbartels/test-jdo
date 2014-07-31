@@ -20,14 +20,12 @@ public class SimpleTest
         try
         {
             tx.begin();
+            PersonList list = new PersonList();
+            pm.makePersistent(list);
             Person p = new Person(1, "test");
-            pm.makePersistent(p);
-            
-            Person p2 = pm.getObjectById(Person.class, 1);
+            pm.makePersistent(p);            
+            list.getpList().add(p);
             tx.commit();
-            
-            
-            
         }
         catch (Throwable thr)
         {

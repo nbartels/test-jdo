@@ -2,9 +2,9 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
   <persistence-unit name="MyTest">
     <!-- Add all of your model classes here -->
-    <class>mydomain.model.BasicPerson</class>
+    <class>mydomain.model.PersonList</class>
     <class>mydomain.model.Person</class>
-    <exclude-unlisted-classes/>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <!-- Update these datastore details if different -->
       <property name="javax.jdo.PersistenceManagerFactoryClass" value="org.datanucleus.api.jdo.JDOPersistenceManagerFactory"/>

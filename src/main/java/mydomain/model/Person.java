@@ -1,32 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package mydomain.model;
 
-import javax.jdo.annotations.Discriminator;
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.*;
 
-@PersistenceCapable(detachable="true")
-@Inheritance(strategy = InheritanceStrategy.SUPERCLASS_TABLE)
-@Discriminator(value = "Person")
-public class Person extends BasicPerson {
+@PersistenceCapable(detachable="true", table = "Person")
+@Discriminator(column = "jdo_class", value = "Person", strategy = DiscriminatorStrategy.VALUE_MAP)
+public class Person
+{
+    @PrimaryKey
+    Long id;
+
+    String name;
     
-    private String lastName;
-
-    public Person(long id, String name) {
-        super(id, name);
+    public Person(long id, String name)
+    {
+        this.id = id;
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getName()
+    {
+        return name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Long getId()
+    {
+        return id;
     }
 }
