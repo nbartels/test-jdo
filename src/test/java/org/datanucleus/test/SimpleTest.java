@@ -20,9 +20,14 @@ public class SimpleTest
         try
         {
             tx.begin();
-
-            // [INSERT code here to persist object required for testing]
+            Person p = new Person(1, "test");
+            pm.makePersistent(p);
+            
+            Person p2 = pm.getObjectById(Person.class, 1);
             tx.commit();
+            
+            
+            
         }
         catch (Throwable thr)
         {
