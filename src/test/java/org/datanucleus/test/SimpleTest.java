@@ -1,11 +1,13 @@
 package org.datanucleus.test;
 
-import org.junit.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.jdo.*;
 
-import static org.junit.Assert.*;
 import mydomain.model.*;
 import org.datanucleus.util.NucleusLogger;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 public class SimpleTest
 {
@@ -20,8 +22,16 @@ public class SimpleTest
         try
         {
             tx.begin();
-
-            // [INSERT code here to persist object required for testing]
+            AddressInfo info1 = new AddressInfo("str1", 1L);
+            pm.makePersistent(info1);
+            AddressInfo info2 = new AddressInfo("str2", 2L);
+            pm.makePersistent(info2);
+            List<AddressInfo> adrList = new ArrayList<AddressInfo>();
+            adrList.add(info1);
+            adrList.add(info2);
+            Person p = new Person(1);
+            p.setAddressInfoList(adrList);
+            pm.makePersistent(p);
             tx.commit();
         }
         catch (Throwable thr)
