@@ -65,7 +65,7 @@ public class SimpleTest {
             tx.begin();
             {
                 Component parent = (Component) pm.getObjectById(parentOid);
-                Component child = (Component) pm.getObjectId(childOid);
+                Component child = (Component) pm.getObjectById(childOid);
                 List<Component> children = new ArrayList<>();
                 children.add(child);
                 parent.setSubComponents(children);
