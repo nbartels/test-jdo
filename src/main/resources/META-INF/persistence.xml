@@ -6,7 +6,8 @@
 
     <persistence-unit name="MyTest">
         <!-- Add all of your model classes here -->
-        <class>mydomain.model.Person</class>
+        <class>mydomain.model.PersonImpl</class>
+        <class>mydomain.model.Group</class>
         <exclude-unlisted-classes />
         <properties>
             <!-- Update these datastore details if different -->
@@ -17,6 +18,9 @@
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
 
             <property name="datanucleus.schema.autoCreateAll" value="true"/>
+
+			<property name="datanucleus.Optimistic" value="true" />
+			<property name="datanucleus.cache.level2.type" value="weak" />
         </properties>
     </persistence-unit>
 
