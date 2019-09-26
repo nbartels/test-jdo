@@ -21,9 +21,20 @@ public class SimpleTest
         try
         {
             tx.begin();
+            // we create a "Test" person first and commit it
+            Person testPerson = new Person(1, "Tester");
+            pm.makePersistent(testPerson);
 
-            // [INSERT code here to persist object required for testing]
+            // we save  the object id here to use it later on
+            Object personOid = pm.getObjectId(testPerson);
+            tx.commit();
+            tx.begin();
 
+            // Now we fetch the object again
+            Person testPerson2 = pm.getObjectById(Person.class, personOid);
+
+            // check the class of the Birthday, it should be a java.util.Date
+            Assert.assertEquals(Date.class, testPerson2.getBirthDay().getClass());
             tx.commit();
         }
         catch (Throwable thr)
