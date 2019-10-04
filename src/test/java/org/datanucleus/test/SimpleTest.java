@@ -21,9 +21,9 @@ public class SimpleTest
         try
         {
             tx.begin();
-
-            // [INSERT code here to persist object required for testing]
-
+	    Person myPerson = new Person(1, "Test");
+            pm.makePersistent(myPerson);
+            Object objId = pm.getObjectId(myPerson);
             tx.commit();
         }
         catch (Throwable thr)
